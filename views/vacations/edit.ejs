@@ -1,0 +1,78 @@
+<div class="data-form">
+  <form class="form-signin" action="<%=`/vacations/${vacation._id}/update?_method=PUT`%>" method="POST">
+    <h2 class="form-signin-heading">Edit Vacation:</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" value="<%= vacation.title %>" placeholder="Title" autofocus>
+
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" value="<%= vacation.description %>" placeholder="Description">
+
+    <label for="inputMaxTravelers">Max Travelers</label>
+
+    <select name="maxTravelers" id="inputMaxTravelers" class="form-control">
+      <% for(var i=process.env.MIN_TRAVELERS; i <= process.env.MAX_TRAVELERS; i++) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      
+    </select>
+    
+    <label for="inputCost">Cost</label>
+    <input type="text" name="cost" id="inputCost" pattern="\d*" class="form-control" value="<%= vacation.cost %>" placeholder="Cost" required>
+
+    <label for="inputCuisine">Cuisine</label>
+    <select name="cuisine" id="inputCuisine" class="form-control">
+      <option value=""></option>
+      <option value="African">African</option>
+      <option value="Asian">Asian</option>
+      <option value="Central American">Central American</option>
+      <option value="Continental">Continental</option>
+      <option value="Fusion">Fusion</option>
+      <option value="Haute-cuisine">Haute-cuisine</option>
+      <option value="Indian">Indian</option>
+      <option value="Middle Eastern">Middle Eastern</option>
+      <option value="Nouvelle-cuisine">Nouvelle-cuisine</option>
+      <option value="South American">South American</option>
+      <option value="Traditional">Traditional</option>
+      <option value="Vegan">Vegan</option>
+      <option value="Vegitarian">Vegitarian</option>
+    </select>
+
+    <label for="inputHeroImage">Hero Image</label>
+    <input type="text" name="heroImage" id="inputheroImage" class="form-control" value="<%= vacation.heroImage %>" placeholder="Hero Image">
+
+    <label for="inputDestination">Destination</label>
+    <input type="text" name="destination" id="inputDestination" class="form-control" value="<%= vacation.destination %>" placeholder="Destination">
+
+    <label for="inputDepartureLocation">Departure Location</label>
+
+    <select name="departureLocation" id="inputDepartureLocation" class="form-control">
+      <option value=""></option>
+      <option value="Boston (BOS)">Boston (BOS)</option>
+      <option value="Chicago (ORD)">Chicago (ORD)</option>
+      <option value="Dallas (DFW)">Dallas (DFW)</option>
+      <option value="Miami (MIA)">Miami (MIA)</option>
+      <option value="New York (JFK)">New York (JFK)</option>
+      <option value="San Francisco (SFO)">San Francisco (SFO)</option>
+      <option value="Seattle (SEA)">Seattle (SEA)</option>
+      <option value="St. Louis (STL)">St. Louis (STL)</option>
+    </select>
+
+    <label for="inputDepartureDate">Departure Date</label>
+    
+    <input type="datetime-local" name="departureDate" id="inputDepartureDate" class="form-control" placeholder="Departure Date" > 
+    
+
+    <label for="inputReturnDate">Return Date</label>
+    <input type="datetime-local" name="returnDate" id="inputReturnDate" class="form-control" placeholder="Return Date">
+
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>
+<script>
+  console.log("Hello");
+  document.getElementById('inputCuisine').value="<%= vacation.cuisine %>";
+  document.getElementById('inputMaxTravelers').value="<%= vacation.maxTravelers %>";
+  document.getElementById('inputDepartureLocation').value="<%= vacation.departureLocation %>";
+  document.getElementById('inputDepartureDate').value="<%= vacation.departureDate.toISOString().slice(0,16) %>";
+  document.getElementById('inputReturnDate').value="<%= vacation.returnDate.toISOString().slice(0,16) %>";
+</script>

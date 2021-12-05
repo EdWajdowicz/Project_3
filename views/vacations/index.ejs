@@ -1,14 +1,18 @@
 <h2 class="center">Culinary Vacations Packages Table</h2>
-<a href="/vacations/new">
-  <span class="button">Create a NEW Culinary Vacations</span>
-</a>
+<% if (loggedIn) { %>
+  <a href="/vacations/new">
+    <span class="button">Create a NEW Culinary Vacations</span>
+  </a>
+  <% } %>
 <table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <% if (loggedIn) { %>
+        <th>Edit</th>
+        <th>Delete</th>
+        <% } %>
     </tr>
   </thead>
   <tbody>
@@ -23,12 +27,16 @@
         <%= vacation.description %>
       </td>
       <td>
-        <a href="<%=`vacations/${vacation._id}/edit`%>">
-          Edit
-        </a>
+        <% if (loggedIn) { %>
+          <a href="<%=`vacations/${vacation._id}/edit`%>">
+            Edit
+          </a>
+        <% } %>
       </td>
       <td>
-        <a href="<%= `vacations/${vacation._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+        <% if (loggedIn) { %>
+          <a href="<%= `vacations/${vacation._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+          <% } %>
       </td>
     </tr>
     <% }); %>

@@ -67,12 +67,16 @@
 
 
 <div>
-  <a class="button" href="<%=`/vacations/${vacation._id}/edit`%>">
-    Edit Vacation Details
-  </a>
+  <% if (loggedIn) { %>
+    <a class="button" href="<%=`/vacations/${vacation._id}/edit`%>">
+      Edit Vacation Details
+    </a>
+    <% } %>
 </div>
 <div>
-  <a class="button" href="<%= `/vacations/${vacation._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+  <% if (loggedIn) { %>
+    <a class="button" href="<%= `/vacations/${vacation._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+  <% } %>
 </div>
 <div>
   <a class="button" href="/vacations">View all vacations</a>

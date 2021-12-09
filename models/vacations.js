@@ -21,8 +21,7 @@ var vacationsSchema = new Schema(
     heroImage: {
       default : "HeroImage.jpg",
       type: String,
-      required: true,
-      unique: true
+      required: true
     },
     cuisine: {
       type: String,
